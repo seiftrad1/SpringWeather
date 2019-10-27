@@ -11,6 +11,10 @@ public class WeatherController {
 
     @Autowired
     private WeatherService weatherService ;
+
+    /*the rest api using the method POST in order to fill the object in the body with the two numbers
+    after that we will get the object with the two numbers plus the result of the function provided in the service
+    */
     @CrossOrigin
     @RequestMapping(value="/Multiply",method=RequestMethod.POST)
     public Weather multiplyNumbers(@RequestBody Weather weather) {
