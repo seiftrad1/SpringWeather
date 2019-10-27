@@ -1,20 +1,21 @@
 package com.example.weather.Controller;
 
 import com.example.weather.Model.Weather;
+import com.example.weather.Services.WeatherService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
 public class WeatherController {
 
+    @Autowired
+    private WeatherService weatherService ;
     @CrossOrigin
-    @RequestMapping(value="/{n1}/{n2}",method= RequestMethod.POST)
-    public Weather Add(@RequestBody Weather weather, @PathVariable int n1 , @PathVariable int n2) {
-        weather.setNumber1(n1);
-        weather.setNumber2(n2);
-        weather.setMultiple(n1*n2);
-        return weather;
-    }
+    @RequestMapping(value="/Multiply",method=RequestMethod.POST)
+    public Weather multiplyNumbers(@RequestBody Weather weather) {
 
+        return weatherService.multiply(weather.getNumber1(),weather.getNumber2());
+    }
 }
 
